@@ -45,13 +45,4 @@ public class Contract {
         return installments;
     }
 
-    @Override
-    public String toString() {
-        return "Contract{" +
-                "number=" + number +
-                ", date=" + date +
-                ", totalValue=" + totalValue +
-                ", installments=" + installments +
-                '}';
-    }
 }
