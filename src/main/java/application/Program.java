@@ -3,6 +3,7 @@ package application;
 import model.entites.Contract;
 import model.entites.Installment;
 import model.services.ContractService;
+import model.services.PaypalService;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,16 +31,13 @@ public class Program {
 
         Contract contract = new Contract(contractId, date, contractValue);
         ContractService service = new ContractService();
-        service.processContract(contract, installments);
+        service.processContract(contract, installments, new PaypalService());
 
         System.out.println("Parcelas (Data - valor): ");
-//        contract.getInstallments().forEach( installment -> {
-//            System.out.println(installment.getDueDate()+" - "+ installment.getAmount());
-//        });
-        for ( Installment installment : contract.getInstallments()) {
-            System.out.println(sdf.format(installment.getDueDate()) +" - "+ installment.getAmount());
-        }
 
+        contract.getInstallments().forEach( installment -> {
+            System.out.println(sdf.format(installment.getDueDate()) + " - " + installment.getAmount());
+        });
 
         sc.close();
     }
