@@ -30,8 +30,8 @@ public class Program {
         Integer installments = sc.nextInt();
 
         Contract contract = new Contract(contractId, date, contractValue);
-        ContractService service = new ContractService();
-        service.processContract(contract, installments, new PaypalService());
+        ContractService service = new ContractService(new PaypalService());
+        service.processContract(contract, installments);
 
         System.out.println("Parcelas (Data - valor): ");
 

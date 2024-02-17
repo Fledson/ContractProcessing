@@ -8,8 +8,13 @@ import java.util.GregorianCalendar;
 
 public class ContractService {
 
+    private OnlinePaymentService paymentService;
 
-    public void processContract(Contract contract, Integer months, OnlinePaymentService paymentService){
+    public ContractService(OnlinePaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
+
+    public void processContract(Contract contract, Integer months){
         // definindo um calaendario
         GregorianCalendar calendar = new GregorianCalendar();
         calendar.setTime(contract.getDate());
